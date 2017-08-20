@@ -24,5 +24,19 @@ namespace HackerNewsUwpEo.Tests.Stories
             //Assert
             fakeSetText.Assert(val => val.Should().Be("The Title"));
         }
+        [TestMethod, TestCategory("unit")]
+        public async Task ShouldSetAuthor()
+        {
+
+            //Arrange 
+            FakeSetText fakeSetText = new FakeSetText();
+            Story story = new JsonStory(new FakeJsonObject(new Dictionary<string, object> { { "by", "The Author" } }));
+
+            //Act
+            await story.AuthorInto(fakeSetText);
+
+            //Assert
+            fakeSetText.Assert(val => val.Should().Be("The Author"));
+        }
     }
 }
