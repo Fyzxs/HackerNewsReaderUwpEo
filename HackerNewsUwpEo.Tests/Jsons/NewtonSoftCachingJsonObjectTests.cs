@@ -9,7 +9,7 @@ using System.Text;
 namespace HackerNewsUwpEo.Tests.Jsons
 {
     [TestClass]
-    public class DefaultJsonTests
+    public class NewtonSoftCachingJsonObjectTests
     {
         [TestMethod, TestCategory("unit")]
         public void ShouldReturnTitleFromStream()

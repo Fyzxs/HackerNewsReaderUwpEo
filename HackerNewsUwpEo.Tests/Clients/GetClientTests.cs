@@ -13,7 +13,7 @@ namespace HackerNewsUwpEo.Tests.Clients
     public class GetClientTests
     {
         [TestMethod, TestCategory("unit")]
-        public async Task ShouldReturnJson()
+        public async Task ShouldReturnJsonObject()
         {
             //Arrange
             FakeHttpRequestMessage fakeHttpRequestMessage = new FakeHttpRequestMessage("http://Not.a.real/url");
@@ -45,6 +45,23 @@ namespace HackerNewsUwpEo.Tests.Clients
 
             //Assert
             value.Should().Be(@"{""title"":""The Title""}");
+        }
+        [TestMethod, TestCategory("unit")]
+        public async Task ShouldReturnJsonArray()
+        {
+            //Arrange
+            FakeHttpRequestMessage fakeHttpRequestMessage = new FakeHttpRequestMessage("http://Not.a.real/url");
+            FakeHttpResponseMessage fakeHttpResponseMessage = new FakeHttpResponseMessage(new StringContent(@"[123, 456, 789]"));
+            FakeResponseHandler fakeResponseHandler = new FakeResponseHandler(fakeHttpRequestMessage, fakeHttpResponseMessage);
+
+            Client client = new GetClient("http://Not.a.real/url", new HttpClient(fakeResponseHandler), new NewtonSoftJsonParser());
+            JsonArray jsonArray = await client.JsonArray();
+
+            //Act
+            string first = jsonArray.Next<string>();
+
+            //Assert
+            first.Should().Be("123");
         }
     }
 }

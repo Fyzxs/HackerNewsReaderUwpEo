@@ -95,13 +95,14 @@
     <SDKReference Include="TestPlatform.Universal, Version=$(UnitTestPlatformVersion)" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fakes\FakeJsonArray.cs" />
     <Compile Include="Fakes\FakeStory.cs" />
     <Compile Include="Fakes\FakeTopStories.cs" />
     <Compile Include="Stories\ClientCacheStoryTests.cs" />
     <Compile Include="Stories\ClientStoryTests.cs" />
-    <Compile Include="Jsons\DefaultJsonTests.cs" />
+    <Compile Include="Jsons\NewtonSoftCachingJsonObjectTests.cs" />
     <Compile Include="Fakes\FakeClient.cs" />
-    <Compile Include="Fakes\FakeJson.cs" />
+    <Compile Include="Fakes\FakeJsonObject.cs" />
     <Compile Include="Fakes\FakeResponseHandler.cs" />
     <Compile Include="Fakes\FakeSetText.cs" />
     <Compile Include="Fakes\FakeText.cs" />
@@ -115,6 +116,8 @@
     <Compile Include="CactooSharp\Texts\IsWhiteSpaceTests.cs" />
     <Compile Include="CactooSharp\Texts\NotNullTests.cs" />
     <Compile Include="CactooSharp\Texts\TextOfTests.cs" />
+    <Compile Include="Stories\Top\DefaultTopStoriesTests.cs" />
+    <Compile Include="Stories\Top\ClientCacheTopStoriesTests.cs" />
     <Compile Include="UnitTestApp.xaml.cs">
       <DependentUpon>UnitTestApp.xaml</DependentUpon>
     </Compile>
@@ -168,9 +171,7 @@
       <Name>HackerNewsUwpEo</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Stories\Top\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

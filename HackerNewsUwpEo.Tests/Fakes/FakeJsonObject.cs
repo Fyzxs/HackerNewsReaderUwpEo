@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace HackerNewsUwpEo.Tests.Fakes
 {
-    public class FakeJson : JsonObject
+    public class FakeJsonObject : JsonObject
     {
         private readonly Dictionary<string, object> _dictionary;
 
-        public FakeJson(Dictionary<string, object> dictionary) => _dictionary = dictionary;
+        public FakeJsonObject(Dictionary<string, object> dictionary) => _dictionary = dictionary;
 
         public T Value<T>(string key) => (T)_dictionary[key];
     }

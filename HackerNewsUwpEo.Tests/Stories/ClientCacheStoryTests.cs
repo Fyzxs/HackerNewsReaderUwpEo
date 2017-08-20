@@ -17,7 +17,7 @@ namespace HackerNewsUwpEo.Tests.Stories
 
             //Arrange 
             FakeSetText fakeSetText = new FakeSetText();
-            Client client = new FakeClient(new FakeJsonParser(new FakeJson(new Dictionary<string, object> { { "title", "The Title" } })));
+            Client client = new FakeClient(new FakeJsonObject(new Dictionary<string, object> { { "title", "The Title" } }));
             Story story = new ClientCacheStory(client);
 
             //Act
@@ -32,7 +32,7 @@ namespace HackerNewsUwpEo.Tests.Stories
 
             //Arrange 
             FakeSetText fakeSetText = new FakeSetText();
-            Client client = new FakeClient(new FakeJsonParser(new FakeJson(new Dictionary<string, object> { { "by", "The Author" } })));
+            Client client = new FakeClient(new FakeJsonObject(new Dictionary<string, object> { { "by", "The Author" } }));
             Story story = new ClientCacheStory(client);
 
             //Act

@@ -3,6 +3,7 @@ using HackerNewsUwpEo.Stories;
 using HackerNewsUwpEo.Tests.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace HackerNewsUwpEo.Tests.Stories
 {
@@ -10,15 +11,15 @@ namespace HackerNewsUwpEo.Tests.Stories
     public class JsonStoryTests
     {
         [TestMethod, TestCategory("unit")]
-        public void ShouldSetTitle()
+        public async Task ShouldSetTitle()
         {
 
             //Arrange 
             FakeSetText fakeSetText = new FakeSetText();
-            Story story = new JsonStory(new FakeJson(new Dictionary<string, object> { { "title", "The Title" } }));
+            Story story = new JsonStory(new FakeJsonObject(new Dictionary<string, object> { { "title", "The Title" } }));
 
             //Act
-            story.TitleInto(fakeSetText);
+            await story.TitleInto(fakeSetText);
 
             //Assert
             fakeSetText.Assert(val => val.Should().Be("The Title"));

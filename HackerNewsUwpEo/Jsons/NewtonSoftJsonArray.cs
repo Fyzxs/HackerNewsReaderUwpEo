@@ -12,10 +12,8 @@ namespace HackerNewsUwpEo.Jsons
         public NewtonSoftJsonArray(Text text) => _text = text;
 
         public T Next<T>() => Parse()[_indexer++].Value<T>();
-        public int Count()
-        {
-            return Parse().Count;
-        }
+
+        public int Count() => Parse().Count;
 
         private JArray Parse() => _jArray ?? (_jArray = JArray.Parse(_text.String()));
 
