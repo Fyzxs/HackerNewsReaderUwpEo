@@ -95,6 +95,9 @@
     <SDKReference Include="TestPlatform.Universal, Version=$(UnitTestPlatformVersion)" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fakes\FakeStory.cs" />
+    <Compile Include="Fakes\FakeTopStories.cs" />
+    <Compile Include="Stories\ClientCacheStoryTests.cs" />
     <Compile Include="Stories\ClientStoryTests.cs" />
     <Compile Include="Jsons\DefaultJsonTests.cs" />
     <Compile Include="Fakes\FakeClient.cs" />
@@ -164,6 +167,9 @@
       <Project>{CA572018-0657-484E-97AC-D916082A2931}</Project>
       <Name>HackerNewsUwpEo</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Stories\Top\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

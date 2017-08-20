@@ -15,7 +15,7 @@ namespace HackerNewsUwpEo.Tests.Jsons
         public void ShouldReturnTitleFromStream()
         {
             //Arrange
-            JsonObject json = new DefaultJson(new MemoryStream(Encoding.ASCII.GetBytes(@"{""title"":""The Title""}")));
+            JsonObject json = new NewtonSoftCachingJsonObject(new MemoryStream(Encoding.ASCII.GetBytes(@"{""title"":""The Title""}")));
 
             //Act
             string title = json.Value<string>("title");
@@ -29,7 +29,7 @@ namespace HackerNewsUwpEo.Tests.Jsons
         public void ShouldReturnTitleFromString()
         {
             //Arrange
-            JsonObject json = new DefaultJson(@"{""title"":""The Title""}");
+            JsonObject json = new NewtonSoftCachingJsonObject(@"{""title"":""The Title""}");
 
             //Act
             string title = json.Value<string>("title");
@@ -43,7 +43,7 @@ namespace HackerNewsUwpEo.Tests.Jsons
         public void ShouldReturnTitleFromText()
         {
             //Arrange
-            JsonObject json = new DefaultJson(new FakeText(@"{""title"":""The Title""}"));
+            JsonObject json = new NewtonSoftCachingJsonObject(new FakeText(@"{""title"":""The Title""}"));
 
             //Act
             string title = json.Value<string>("title");
@@ -57,7 +57,7 @@ namespace HackerNewsUwpEo.Tests.Jsons
         public void ShouldParseOnce()
         {
             //Arrange
-            JsonObject json = new DefaultJson(new FakeText(() => @"{""title"":""The Title""}", () => throw new Exception("Called Multiple Times")));
+            JsonObject json = new NewtonSoftCachingJsonObject(new FakeText(() => @"{""title"":""The Title""}", () => throw new Exception("Called Multiple Times")));
             json.Value<string>("title");
 
             //Act

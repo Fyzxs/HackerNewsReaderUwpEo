@@ -102,9 +102,12 @@
     <Compile Include="Jsons\NewtonSoftJsonArray.cs" />
     <Compile Include="Jsons\NewtonSoftJsonObject.cs" />
     <Compile Include="Jsons\NewtonSoftJsonParser.cs" />
-    <Compile Include="Stories\ClientStory.cs" />
-    <Compile Include="Jsons\DefaultJson.cs" />
+    <Compile Include="Stories\ClientCacheStory.cs" />
+    <Compile Include="Stories\Top\ClientCacheTopStories.cs" />
+    <Compile Include="Stories\DefaultStory.cs" />
+    <Compile Include="Jsons\NewtonSoftCachingJsonObject.cs" />
     <Compile Include="Clients\GetClient.cs" />
+    <Compile Include="Stories\Top\DefaultTopStories.cs" />
     <Compile Include="Stories\JsonStory.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -120,6 +123,7 @@
     <Compile Include="CactooSharp\Texts\TextOf.cs" />
     <Compile Include="Mixins\SetText.cs" />
     <Compile Include="Stories\Story.cs" />
+    <Compile Include="Stories\Top\TopStories.cs" />
     <Compile Include="Widgets\StoryList.xaml.cs">
       <DependentUpon>StoryList.xaml</DependentUpon>
     </Compile>

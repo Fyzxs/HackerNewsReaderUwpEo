@@ -9,8 +9,8 @@ namespace HackerNewsUwpEo.Stories
         private readonly JsonObject _origin;
         public JsonStory(JsonObject origin) => _origin = origin;
 
-        public async Task TitleInto(SetText item) => await Task.Run(() => item.Text = _origin.Value<string>("title"));
+        public Task TitleInto(SetText item) => Task.Run(() => item.Text = _origin.Value<string>("title"));
 
-        public async Task AuthorInto(SetText item) => await Task.Run(() => item.Text = _origin.Value<string>("by"));
+        public Task AuthorInto(SetText item) => Task.Run(() => item.Text = _origin.Value<string>("by"));
     }
 }

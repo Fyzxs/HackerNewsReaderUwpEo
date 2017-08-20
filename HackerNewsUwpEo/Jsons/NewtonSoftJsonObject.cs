@@ -6,7 +6,7 @@ namespace HackerNewsUwpEo.Jsons
     {
         private readonly JsonObject _jsonObject;
 
-        public NewtonSoftJsonObject(Text text) : this(new DefaultJson(text)) { }
+        public NewtonSoftJsonObject(Text text) : this(new NewtonSoftCachingJsonObject(text)) { }
 
         public NewtonSoftJsonObject(JsonObject jsonObject) => _jsonObject = jsonObject;
 

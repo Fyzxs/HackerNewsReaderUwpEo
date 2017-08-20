@@ -5,16 +5,15 @@ using System.IO;
 
 namespace HackerNewsUwpEo.Jsons
 {
-    public class DefaultJson : JsonObject
+    public class NewtonSoftCachingJsonObject : JsonObject
     {
         private readonly Text _origin;
         private JObject _parsed;
 
-        public DefaultJson(Stream origin) : this(new TextOf(origin)) { }
-        public DefaultJson(string origin) : this(new TextOf(origin)) { }
+        public NewtonSoftCachingJsonObject(Stream origin) : this(new TextOf(origin)) { }
+        public NewtonSoftCachingJsonObject(string origin) : this(new TextOf(origin)) { }
 
-        public DefaultJson(Text origin) => _origin = origin;
-
+        public NewtonSoftCachingJsonObject(Text origin) => _origin = origin;
 
         public T Value<T>(string key) => Parsed().Value<T>(key);
 

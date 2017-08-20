@@ -1,9 +1,11 @@
+using HackerNewsUwpEo.CactooSharp;
 using System.Threading.Tasks;
 
-namespace HackerNewsUwpEo.Jsons {
+namespace HackerNewsUwpEo.Jsons
+{
     public interface JsonParser
     {
-        Task<JsonArray> AsJsonArray();
-        Task<JsonObject> AsJsonObject();
+        Task<JsonArray> JsonArray(Text text);
+        Task<JsonObject> JsonObject(Text text);
     }
 }

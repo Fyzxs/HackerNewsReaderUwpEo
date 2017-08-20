@@ -2,9 +2,9 @@
 using HackerNewsUwpEo.Clients;
 using HackerNewsUwpEo.Jsons;
 using HackerNewsUwpEo.Stories;
+using HackerNewsUwpEo.Stories.Top;
 using HackerNewsUwpEo.Tests.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -23,9 +23,8 @@ namespace HackerNewsUwpEo.Tests
             FakeHttpResponseMessage fakeHttpResponseMessage = new FakeHttpResponseMessage(new StringContent(@"{""title"":""The Title""}"));
             FakeResponseHandler fakeResponseHandler = new FakeResponseHandler(fakeHttpRequestMessage, fakeHttpResponseMessage);
 
-            Client client = new GetClient("http://Not.a.real/url", new HttpClient(fakeResponseHandler));
-
-            Story story = new ClientStory(client);
+            Client client = new GetClient("http://Not.a.real/url", new HttpClient(fakeResponseHandler), new NewtonSoftJsonParser());
+            Story story = new ClientCacheStory(client);
 
             //Act
             await story.TitleInto(fakeSet);
@@ -39,7 +38,7 @@ namespace HackerNewsUwpEo.Tests
         {
             //Arrange
             FakeSetText fakeSetText = new FakeSetText();
-            Story story = new ClientStory("8863");
+            Story story = new DefaultStory("8863");
 
             //Act
             await story.TitleInto(fakeSetText);
@@ -51,13 +50,15 @@ namespace HackerNewsUwpEo.Tests
         [TestMethod, TestCategory("functional")]
         public async Task TopStories()
         {
-            string result = new HttpClient().GetStringAsync("https://hacker-news.firebaseio.com/v0/topstories.json").Result;
-            JArray jArray = JArray.Parse(result);
-
-
             Client client = new GetClient("https://hacker-news.firebaseio.com/v0/topstories.json");
+            JsonArray jsonArray = await client.JsonArray();
 
-            JsonParser jsonParser = await client.JsonParser();
+            TopStories topStories = new DefaultTopStories();
+            int count = await topStories.Count();
+            for (int i = 0; i < count; i++)
+            {
+                string id = await topStories.NextId();
+            }
         }
     }
 }

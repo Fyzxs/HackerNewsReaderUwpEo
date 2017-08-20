@@ -6,7 +6,8 @@ namespace HackerNewsUwpEo.Clients
 {
     public interface Client
     {
-        Task<JsonParser> JsonParser();
+        Task<JsonArray> JsonArray();
+        Task<JsonObject> JsonObject();
         Task<Text> Text();
     }
 }

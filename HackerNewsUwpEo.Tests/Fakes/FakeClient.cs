@@ -14,6 +14,10 @@ namespace HackerNewsUwpEo.Tests.Fakes
 
         public Task<JsonParser> JsonParser() => Task.FromResult(_json);
 
+        public Task<JsonArray> JsonArray() => _json.JsonArray(null);
+
+        public Task<JsonObject> JsonObject() => _json.JsonObject(null);
+
         public Task<Text> Text() => Task.FromResult(_text);
     }
 }

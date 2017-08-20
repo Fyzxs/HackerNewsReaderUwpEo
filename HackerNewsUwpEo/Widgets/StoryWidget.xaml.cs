@@ -22,7 +22,7 @@ namespace HackerNewsUwpEo.Widgets
         {
             if (DesignMode.DesignModeEnabled) return;
 
-            Story story = new ClientStory(_id);
+            Story story = new DefaultStory(_id);
             await story.AuthorInto(new TextWidget(TxtAuthor));
             await story.TitleInto(new TextWidget(TxtTitle));
         }

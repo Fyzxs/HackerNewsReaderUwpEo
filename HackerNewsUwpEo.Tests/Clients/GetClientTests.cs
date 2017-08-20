@@ -20,9 +20,8 @@ namespace HackerNewsUwpEo.Tests.Clients
             FakeHttpResponseMessage fakeHttpResponseMessage = new FakeHttpResponseMessage(new StringContent(@"{""title"":""The Title""}"));
             FakeResponseHandler fakeResponseHandler = new FakeResponseHandler(fakeHttpRequestMessage, fakeHttpResponseMessage);
 
-            Client client = new GetClient("http://Not.a.real/url", new HttpClient(fakeResponseHandler));
-            JsonParser json = await client.JsonParser();
-            JsonObject jobj = await json.AsJsonObject();
+            Client client = new GetClient("http://Not.a.real/url", new HttpClient(fakeResponseHandler), new NewtonSoftJsonParser());
+            JsonObject jobj = await client.JsonObject();
 
             //Act
             string title = jobj.Value<string>("title");
@@ -38,7 +37,7 @@ namespace HackerNewsUwpEo.Tests.Clients
             FakeHttpResponseMessage fakeHttpResponseMessage = new FakeHttpResponseMessage(new StringContent(@"{""title"":""The Title""}"));
             FakeResponseHandler fakeResponseHandler = new FakeResponseHandler(fakeHttpRequestMessage, fakeHttpResponseMessage);
 
-            Client client = new GetClient("http://Not.a.real/url", new HttpClient(fakeResponseHandler));
+            Client client = new GetClient("http://Not.a.real/url", new HttpClient(fakeResponseHandler), new NewtonSoftJsonParser());
             Text text = await client.Text();
 
             //Act

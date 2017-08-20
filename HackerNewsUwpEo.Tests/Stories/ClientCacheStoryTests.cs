@@ -1,13 +1,15 @@
 using FluentAssertions;
+using HackerNewsUwpEo.Clients;
 using HackerNewsUwpEo.Stories;
 using HackerNewsUwpEo.Tests.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace HackerNewsUwpEo.Tests.Stories
 {
     [TestClass]
-    public class ClientStoryTests
+    public class ClientCacheStoryTests
     {
         [TestMethod, TestCategory("unit")]
         public async Task ShouldSetTitle()
@@ -15,8 +17,8 @@ namespace HackerNewsUwpEo.Tests.Stories
 
             //Arrange 
             FakeSetText fakeSetText = new FakeSetText();
-            FakeStory fakeStory = new FakeStory().Title("The Title");
-            Story story = new DefaultStory(fakeStory);
+            Client client = new FakeClient(new FakeJsonParser(new FakeJson(new Dictionary<string, object> { { "title", "The Title" } })));
+            Story story = new ClientCacheStory(client);
 
             //Act
             await story.TitleInto(fakeSetText);
@@ -30,8 +32,8 @@ namespace HackerNewsUwpEo.Tests.Stories
 
             //Arrange 
             FakeSetText fakeSetText = new FakeSetText();
-            FakeStory fakeStory = new FakeStory().Author("The Author");
-            Story story = new DefaultStory(fakeStory);
+            Client client = new FakeClient(new FakeJsonParser(new FakeJson(new Dictionary<string, object> { { "by", "The Author" } })));
+            Story story = new ClientCacheStory(client);
 
             //Act
             await story.AuthorInto(fakeSetText);
