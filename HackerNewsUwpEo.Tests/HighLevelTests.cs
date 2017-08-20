@@ -1,8 +1,10 @@
 ﻿using FluentAssertions;
 using HackerNewsUwpEo.Clients;
+using HackerNewsUwpEo.Jsons;
 using HackerNewsUwpEo.Stories;
 using HackerNewsUwpEo.Tests.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -44,6 +46,18 @@ namespace HackerNewsUwpEo.Tests
 
             //Assert
             fakeSetText.Assert(val => val.Should().Be("My YC app: Dropbox - Throw away your USB drive"));
+        }
+
+        [TestMethod, TestCategory("functional")]
+        public async Task TopStories()
+        {
+            string result = new HttpClient().GetStringAsync("https://hacker-news.firebaseio.com/v0/topstories.json").Result;
+            JArray jArray = JArray.Parse(result);
+
+
+            Client client = new GetClient("https://hacker-news.firebaseio.com/v0/topstories.json");
+
+            JsonParser jsonParser = await client.JsonParser();
         }
     }
 }

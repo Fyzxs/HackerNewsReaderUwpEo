@@ -5,7 +5,7 @@ using System.IO;
 
 namespace HackerNewsUwpEo.Jsons
 {
-    public class DefaultJson : Json
+    public class DefaultJson : JsonObject
     {
         private readonly Text _origin;
         private JObject _parsed;

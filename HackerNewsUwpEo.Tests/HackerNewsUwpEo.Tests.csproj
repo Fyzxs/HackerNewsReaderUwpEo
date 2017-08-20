@@ -103,6 +103,7 @@
     <Compile Include="Fakes\FakeSetText.cs" />
     <Compile Include="Fakes\FakeText.cs" />
     <Compile Include="Clients\GetClientTests.cs" />
+    <Compile Include="Fakes\FakeJsonParser.cs" />
     <Compile Include="Stories\JsonStoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CactooSharp\Scalars\NotNullTests.cs" />

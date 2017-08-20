@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HackerNewsUwpEo.Tests.Fakes
 {
-    public class FakeJson : Json
+    public class FakeJson : JsonObject
     {
         private readonly Dictionary<string, object> _dictionary;
 

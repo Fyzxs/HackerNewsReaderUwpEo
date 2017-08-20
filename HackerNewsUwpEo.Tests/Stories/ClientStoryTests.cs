@@ -4,6 +4,7 @@ using HackerNewsUwpEo.Stories;
 using HackerNewsUwpEo.Tests.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace HackerNewsUwpEo.Tests.Stories
 {
@@ -11,31 +12,31 @@ namespace HackerNewsUwpEo.Tests.Stories
     public class ClientStoryTests
     {
         [TestMethod, TestCategory("unit")]
-        public void ShouldSetTitle()
+        public async Task ShouldSetTitle()
         {
 
             //Arrange 
             FakeSetText fakeSetText = new FakeSetText();
-            Client client = new FakeClient(new FakeJson(new Dictionary<string, object> { { "title", "The Title" } }));
+            Client client = new FakeClient(new FakeJsonParser(new FakeJson(new Dictionary<string, object> { { "title", "The Title" } })));
             Story story = new ClientStory(client);
 
             //Act
-            story.TitleInto(fakeSetText);
+            await story.TitleInto(fakeSetText);
 
             //Assert
             fakeSetText.Assert(val => val.Should().Be("The Title"));
         }
         [TestMethod, TestCategory("unit")]
-        public void ShouldSetAuthor()
+        public async Task ShouldSetAuthor()
         {
 
             //Arrange 
             FakeSetText fakeSetText = new FakeSetText();
-            Client client = new FakeClient(new FakeJson(new Dictionary<string, object> { { "by", "The Author" } }));
+            Client client = new FakeClient(new FakeJsonParser(new FakeJson(new Dictionary<string, object> { { "by", "The Author" } })));
             Story story = new ClientStory(client);
 
             //Act
-            story.AuthorInto(fakeSetText);
+            await story.AuthorInto(fakeSetText);
 
             //Assert
             fakeSetText.Assert(val => val.Should().Be("The Author"));

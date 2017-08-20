@@ -21,10 +21,11 @@ namespace HackerNewsUwpEo.Tests.Clients
             FakeResponseHandler fakeResponseHandler = new FakeResponseHandler(fakeHttpRequestMessage, fakeHttpResponseMessage);
 
             Client client = new GetClient("http://Not.a.real/url", new HttpClient(fakeResponseHandler));
-            Json json = await client.Json();
+            JsonParser json = await client.JsonParser();
+            JsonObject jobj = await json.AsJsonObject();
 
             //Act
-            string title = json.Value<string>("title");
+            string title = jobj.Value<string>("title");
 
             //Assert
             title.Should().Be("The Title");

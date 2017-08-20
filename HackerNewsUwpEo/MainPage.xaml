@@ -9,6 +9,6 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Widgets:StoryWidget HorizontalAlignment="Left" Height="100" Margin="37,20,0,0" VerticalAlignment="Top" Width="273"/>
+        <Widgets:StoryList HorizontalAlignment="Left" Height="581" VerticalAlignment="Top" Width="349"/>
     </Grid>
 </Page>

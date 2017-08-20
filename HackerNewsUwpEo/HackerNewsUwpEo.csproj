@@ -96,10 +96,15 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Clients\Client.cs" />
+    <Compile Include="Jsons\JsonArray.cs" />
+    <Compile Include="Jsons\JsonObject.cs" />
+    <Compile Include="Jsons\JsonParser.cs" />
+    <Compile Include="Jsons\NewtonSoftJsonArray.cs" />
+    <Compile Include="Jsons\NewtonSoftJsonObject.cs" />
+    <Compile Include="Jsons\NewtonSoftJsonParser.cs" />
     <Compile Include="Stories\ClientStory.cs" />
     <Compile Include="Jsons\DefaultJson.cs" />
     <Compile Include="Clients\GetClient.cs" />
-    <Compile Include="Jsons\Json.cs" />
     <Compile Include="Stories\JsonStory.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -115,6 +120,9 @@
     <Compile Include="CactooSharp\Texts\TextOf.cs" />
     <Compile Include="Mixins\SetText.cs" />
     <Compile Include="Stories\Story.cs" />
+    <Compile Include="Widgets\StoryList.xaml.cs">
+      <DependentUpon>StoryList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Widgets\StoryWidget.xaml.cs">
       <DependentUpon>StoryWidget.xaml</DependentUpon>
     </Compile>
@@ -144,6 +152,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widgets\StoryList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Widgets\StoryWidget.xaml">
       <SubType>Designer</SubType>

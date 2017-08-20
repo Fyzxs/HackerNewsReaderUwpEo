@@ -19,7 +19,7 @@ namespace HackerNewsUwpEo.Clients
             _client = client;
         }
 
-        public async Task<Json> Json() => new DefaultJson(await _client.GetStreamAsync(_url));
+        public async Task<JsonParser> JsonParser() => new NewtonSoftJsonParser(await Text());
         public async Task<Text> Text() => new TextOf(await _client.GetStringAsync(_url));
     }
 }

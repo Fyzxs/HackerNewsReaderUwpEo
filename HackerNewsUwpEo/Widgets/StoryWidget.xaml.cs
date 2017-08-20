@@ -1,12 +1,20 @@
 ﻿using HackerNewsUwpEo.Stories;
+using System;
 using Windows.ApplicationModel;
 
 namespace HackerNewsUwpEo.Widgets
 {
     public sealed partial class StoryWidget
     {
-        public StoryWidget()
+        private readonly string _id;
+        public StoryWidget() : this(null)
         {
+            if (!DesignMode.DesignModeEnabled) throw new Exception("Invalid Ctor");
+        }
+
+        public StoryWidget(string id)
+        {
+            _id = id;
             InitializeComponent();
         }
 
@@ -14,7 +22,7 @@ namespace HackerNewsUwpEo.Widgets
         {
             if (DesignMode.DesignModeEnabled) return;
 
-            Story story = new ClientStory("8863");
+            Story story = new ClientStory(_id);
             await story.AuthorInto(new TextWidget(TxtAuthor));
             await story.TitleInto(new TextWidget(TxtTitle));
         }
