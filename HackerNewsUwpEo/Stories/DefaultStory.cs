@@ -7,7 +7,7 @@ namespace HackerNewsUwpEo.Stories
     {
         private readonly Story _origin;
 
-        public DefaultStory(string id) : this(new ClientCacheStory(id)) { }
+        public DefaultStory(string id) : this(new ClientStory(id)) { }
         public DefaultStory(Story origin) => _origin = origin;
 
         public async Task TitleInto(SetText item) => await _origin.TitleInto(item);

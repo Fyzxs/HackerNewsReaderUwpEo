@@ -1,5 +1,6 @@
 using FluentAssertions;
-using HackerNewsUwpEo.Clients;
+using HackerNewsUwpEo.Clients.Json;
+using HackerNewsUwpEo.Jsons;
 using HackerNewsUwpEo.Stories;
 using HackerNewsUwpEo.Tests.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -17,8 +18,9 @@ namespace HackerNewsUwpEo.Tests.Stories
 
             //Arrange 
             FakeSetText fakeSetText = new FakeSetText();
-            Client client = new FakeClient(new FakeJsonObject(new Dictionary<string, object> { { "title", "The Title" } }));
-            Story story = new ClientCacheStory(client);
+            FakeJsonClient jsonClient = new FakeJsonClient();
+            jsonClient.JsonObject(new FakeJsonObject(new Dictionary<string, object> { { "title", "The Title" } }));
+            Story story = new ClientStory(jsonClient);
 
             //Act
             await story.TitleInto(fakeSetText);
@@ -32,8 +34,9 @@ namespace HackerNewsUwpEo.Tests.Stories
 
             //Arrange 
             FakeSetText fakeSetText = new FakeSetText();
-            Client client = new FakeClient(new FakeJsonObject(new Dictionary<string, object> { { "by", "The Author" } }));
-            Story story = new ClientCacheStory(client);
+            FakeJsonClient jsonClient = new FakeJsonClient();
+            jsonClient.JsonObject(new FakeJsonObject(new Dictionary<string, object> { { "by", "The Author" } }));
+            Story story = new ClientStory(jsonClient);
 
             //Act
             await story.AuthorInto(fakeSetText);
@@ -41,5 +44,17 @@ namespace HackerNewsUwpEo.Tests.Stories
             //Assert
             fakeSetText.Assert(val => val.Should().Be("The Author"));
         }
+    }
+
+    public class FakeJsonClient : JsonClient
+    {
+        private JsonObject _jsonObject;
+        private JsonArray _jsonArray;
+        public void JsonObject(JsonObject jsonObject) => _jsonObject = jsonObject;
+        public void JsonArray(JsonArray jsonArray) => _jsonArray = jsonArray;
+
+        public Task<JsonArray> JsonArray() => Task.FromResult(_jsonArray);
+
+        public Task<JsonObject> JsonObject() => Task.FromResult(_jsonObject);
     }
 }

@@ -13,8 +13,10 @@ namespace HackerNewsUwpEo.Tests.Stories.Top
         [TestMethod, TestCategory("unit")]
         public async Task ShouldReturnIdsInOrder()
         {
-            //Arrange 
-            TopStories stories = new ClientCacheTopStories(new FakeClient(new FakeJsonArray(JArray.Parse("[123, 456, 789]"))));
+            //Arrange
+            FakeJsonClient fakeJsonClient = new FakeJsonClient();
+            fakeJsonClient.JsonArray(new FakeJsonArray(JArray.Parse("[123, 456, 789]")));
+            TopStories stories = new ClientCacheTopStories(fakeJsonClient);
 
             //Act
             string first = await stories.NextId();
@@ -31,7 +33,9 @@ namespace HackerNewsUwpEo.Tests.Stories.Top
         public async Task ShouldReturnCount()
         {
             //Arrange 
-            TopStories stories = new ClientCacheTopStories(new FakeClient(new FakeJsonArray(JArray.Parse("[123, 456, 789]"))));
+            FakeJsonClient fakeJsonClient = new FakeJsonClient();
+            fakeJsonClient.JsonArray(new FakeJsonArray(JArray.Parse("[123, 456, 789]")));
+            TopStories stories = new ClientCacheTopStories(fakeJsonClient);
 
             //Act
             int count = await stories.Count();
